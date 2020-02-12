@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Hello from <span th:text="${name}"></span></h1>
+        <h2>Available Courses</h2>
+        <hr/>
+        <ul>
+            <li th:each="c:${courses}" th:text="${c}"></li>
+        </ul>
+    </body>
+</html>
