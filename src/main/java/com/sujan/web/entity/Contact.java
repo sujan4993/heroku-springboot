@@ -5,18 +5,39 @@
  */
 package com.sujan.web.entity;
 
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  *
  * @author sujan
  */
-
+@Entity
+@Table(name = "tbl_contacts")
 public class Contact {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
+    @Column(name = "subject")
     private String subject;
+    @Column(name = "body")
     private String body;
-    private String sendDate;
+    @Column(name = "contact_date",insertable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sendDate;
+    @Column(name = "is_read")
     private boolean read;
     
     public Contact(){
@@ -62,14 +83,16 @@ public class Contact {
         this.body = body;
     }
 
-    public String getSendDate() {
+    public Date getSendDate() {
         return sendDate;
     }
 
-    public void setSendDate(String sendDate) {
+    public void setSendDate(Date sendDate) {
         this.sendDate = sendDate;
     }
-
+    
+    
+    
     public boolean isRead() {
         return read;
     }
